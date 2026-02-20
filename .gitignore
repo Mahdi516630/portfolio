@@ -12,6 +12,9 @@ cert/
 .env
 .env.local
 
+# Vercel
+.vercel
+
 # IDE
 .vscode/
 .idea/
