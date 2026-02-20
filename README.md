@@ -61,16 +61,64 @@ Pour un usage basique (par exemple, envoi par e-mail ou ouverture locale) :
 > ⚠️ Comme le certificat est auto-signé, le navigateur affichera un avertissement.  
 > Pour la production, utilisez un certificat émis par une autorité de certification (ex. Let’s Encrypt).
 
-## ☁️ Déploiement avec HTTPS automatique
+## ☁️ Déploiement sur Render
 
-Pour un déploiement public avec TLS géré automatiquement (HTTPS), vous pouvez :
+Render gère automatiquement HTTPS/TLS pour votre application. Voici comment déployer :
+
+### Option 1 : Déploiement automatique depuis GitHub
+
+1. **Poussez votre code sur GitHub** :
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit - Portfolio"
+   git remote add origin https://github.com/VOTRE_USERNAME/VOTRE_REPO.git
+   git push -u origin main
+   ```
+
+2. **Connectez votre repo sur Render** :
+   - Allez sur [render.com](https://render.com) et créez un compte
+   - Cliquez sur "New +" → "Web Service"
+   - Connectez votre repository GitHub
+   - Render détectera automatiquement le `package.json` et `render.yaml`
+   - Cliquez sur "Create Web Service"
+
+3. **Configuration automatique** :
+   - **Build Command** : `npm install` (déjà configuré)
+   - **Start Command** : `npm start` (déjà configuré)
+   - **Plan** : Free (gratuit)
+
+4. **HTTPS automatique** :
+   - Render fournit automatiquement un certificat SSL/TLS gratuit
+   - Votre site sera accessible via `https://votre-app.onrender.com`
+
+### Option 2 : Déploiement manuel
+
+1. Sur Render, créez un nouveau "Web Service"
+2. Connectez votre repository Git
+3. Les paramètres suivants seront automatiquement détectés :
+   - **Environment** : Node
+   - **Build Command** : `npm install`
+   - **Start Command** : `npm start`
+   - **Plan** : Free
+
+### Notes importantes pour Render
+
+- ✅ Le serveur utilise automatiquement HTTP (Render ajoute HTTPS automatiquement)
+- ✅ Le port est géré via la variable d'environnement `PORT` (définie automatiquement par Render)
+- ✅ HTTPS/TLS est géré automatiquement par Render (certificat SSL gratuit)
+- ✅ Le plan gratuit permet un déploiement gratuit (avec quelques limitations)
+
+## 🌐 Autres options de déploiement
+
+Pour un déploiement public avec TLS géré automatiquement (HTTPS), vous pouvez aussi :
 
 - Héberger `index.html` sur :
   - GitHub Pages
   - Netlify
   - Vercel
   - OVH, Hostinger, etc. (hébergement mutualisé)
-- Dans ces cas, la plateforme fournit généralement un certificat HTTPS gratuit (souvent via Let’s Encrypt).
+- Dans ces cas, la plateforme fournit généralement un certificat HTTPS gratuit (souvent via Let's Encrypt).
 
 ## ✏️ Personnalisation
 

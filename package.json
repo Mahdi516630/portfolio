@@ -1,5 +1,18 @@
 {
+  "name": "portfolio-mahdi-yacoub-ali",
+  "version": "1.0.0",
+  "description": "Portfolio professionnel - Mahdi Yacoub Ali",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["portfolio", "cybersecurity", "data-science", "web-development"],
+  "author": "Mahdi Yacoub Ali",
+  "license": "MIT",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
