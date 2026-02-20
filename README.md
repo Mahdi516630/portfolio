@@ -9,7 +9,6 @@ Il met en avant vos compétences en cybersécurité, data science, développemen
 - `server.js` – Serveur Node.js + Express pour servir le portfolio en local (HTTPS avec certificats ou HTTP).
 - `vercel.json` – Configuration pour le déploiement sur Vercel (site statique avec headers de sécurité).
 - `render.yaml` – Configuration pour le déploiement sur Render (optionnel).
-- `api/index.js` – Fonction serverless optionnelle pour Vercel (si vous avez besoin d'Express).
 - `cert/` – Dossier à créer pour stocker vos certificats TLS (`privkey.pem` et `fullchain.pem`) - développement local uniquement.
 
 ## 🚀 Utilisation simple (sans serveur)
