@@ -1,838 +1,862 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahdi Yacoub Ali – Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Mahdi Yacoub Ali, diplômé en informatique, spécialisé en cybersécurité, data science, développement web & mobile, cloud et intelligence artificielle."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230f172a'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-size='40' fill='white' font-family='system-ui, -apple-system, BlinkMacSystemFont, sans-serif'%3EMY%3C/text%3E%3C/svg%3E" />
 
-export default function App() {
-  const personalInfo = {
-    name: "Mahdi Yacoub Ali",
-    location: "Djibouti",
-    email: "mahdiyacoubali318@gmail.com",
-    phone: "+253 77 02 96 34",
-    portfolio: "Mahdi516630",
-    about: "Je suis diplômé d'une Licence en Informatique, passionné par les technologies numériques, avec un intérêt particulier pour le développement web, la cybersécurité et les réseaux informatiques. J'aime concevoir des solutions informatiques modernes, sécurisées et efficaces, tout en continuant à renforcer mes compétences techniques à travers des projets pratiques et des certifications professionnelles.\n\nCurieux, rigoureux et motivé, je m'adapte rapidement aux nouvelles technologies et je cherche constamment à améliorer mes compétences pour répondre aux besoins réels des entreprises et des utilisateurs.",
-    profileImage: "https://placehold.co/400x400/1e3a8a/ffffff?text=MYA&font=roboto&fontColor=ffffff&fontSize=60"
-  };
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["system-ui", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                200: "#bfdbfe",
+                300: "#93c5fd",
+                400: "#60a5fa",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+                800: "#1e40af",
+                900: "#1e3a8a",
+              },
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body
+    class="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-primary-500/30"
+  >
+    <!-- Gradient background -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 -z-10 bg-slate-950"
+    >
+      <div
+        class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl"
+      >
+        <div
+          class="relative left-1/2 aspect-[1155/678] w-[72rem] -translate-x-1/2 bg-gradient-to-tr from-primary-500 via-cyan-400 to-emerald-400 opacity-30"
+          style="
+            clip-path: polygon(
+              74% 44%,
+              100% 62%,
+              97% 24%,
+              85% 0,
+              60% 6%,
+              39% 20%,
+              16% 23%,
+              0 40%,
+              18% 80%,
+              45% 100%,
+              72% 86%,
+              92% 72%
+            );
+          "
+        ></div>
+      </div>
+    </div>
 
-  const academicBackground = [
-    {
-      degree: "Licence en Informatique",
-      institution: "Université de Djibouti",
-      period: "2022 - 2025",
-      color: "from-blue-500 to-cyan-400"
-    },
-   
-    {
-      degree: "Programme UNDP – Machine Learning",
-      institution: "United Nations Development Programme",
-      period: "2025",
-      color: "from-fuchsia-500 to-pink-600"
-    }
-  ];
-
-  const skillsCategories = [
-    {
-      title: "Développement Web & Logiciel",
-      items: ["HTML5, CSS3, JavaScript", "PHP, Node.js, Express.js", "Next.js, Bootstrap"],
-      description: "Développement d'applications web dynamiques et responsive",
-      color: "from-blue-500 to-cyan-400"
-    },
-    {
-      title: "Bases de données",
-      items: ["MySQL, PostgreSQL", "Conception de bases de données relationnelles", "Requêtes SQL, CRUD, optimisation basique"],
-      description: "",
-      color: "from-violet-500 to-purple-600"
-    },
-    {
-      title: "Cybersécurité & Réseaux",
-      items: [
-        "Fondamentaux de la cybersécurité",
-        "Réseaux informatiques (TCP/IP, DNS, DHCP, VLAN)",
-        "Sécurité réseau et notions de test d'intrusion",
-        "Analyse des menaces et bonnes pratiques de sécurité"
-      ],
-      description: "",
-      color: "from-red-500 to-rose-600"
-    },
-    {
-      title: "Systèmes & Virtualisation",
-      items: [
-        "Virtualisation (VMware, VirtualBox – notions)",
-        "Utilisation de Linux et Windows",
-        "Déploiement et hébergement d'applications web"
-      ],
-      description: "",
-      color: "from-indigo-600 to-violet-700"
-    },
-    {
-      title: "Outils & Technologies",
-      items: [
-        "Git & GitHub",
-        "API REST",
-        "PHPMailer, OTP, authentification sécurisée",
-        "Visual Studio Code"
-      ],
-      description: "",
-      color: "from-cyan-400 to-blue-600"
-    },
-    {
-      title: "Compétences transversales",
-      items: [
-        "Analyse et résolution de problèmes",
-        "Travail en équipe",
-        "Autonomie et apprentissage rapide",
-        "Sens de l'organisation et rigueur"
-      ],
-      description: "",
-      color: "from-fuchsia-500 to-pink-600"
-    }
-  ];
-
-  const certifications = [
-    { name: "Cisco Certified Network Associate (CCNA)", issuer: "Cisco", color: "from-blue-600 to-cyan-500", year: 2024 },
-    { name: "Certificat PIX", issuer: "Compétences numériques", color: "from-violet-600 to-purple-700", year: 2023 },
-    { name: "HP LIFE Certificate", issuer: "Leadership, Business & Finance", color: "from-rose-500 to-red-600", year: 2025 },
-    { name: "Programme UNDP – Machine Learning", issuer: "UNDP", color: "from-fuchsia-600 to-purple-700", year: 2025 }
-  ];
-
-  // CV Generation Function
-  const generateCV = () => {
-    const cvWindow = window.open('', '_blank');
-    
-    const cvContent = `
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>CV - Mahdi Yacoub Ali</title>
-      <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          line-height: 1.6;
-          color: #333;
-          background: #f8f9fa;
-          padding: 20px;
-        }
-        .cv-container {
-          max-width: 800px;
-          margin: 0 auto;
-          background: white;
-          box-shadow: 0 0 20px rgba(0,0,0,0.1);
-          border-radius: 10px;
-          overflow: hidden;
-        }
-        .header {
-          background: linear-gradient(135deg, #1e3a8a, #4f46e5);
-          color: white;
-          padding: 40px;
-          text-align: center;
-          position: relative;
-        }
-        .header::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #ef4444, #ec4899, #8b5cf6, #3b82f6);
-        }
-        .profile-img {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          border: 4px solid rgba(255,255,255,0.3);
-          margin: 0 auto 20px;
-          object-fit: cover;
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          font-size: 2rem;
-        }
-        .name {
-          font-size: 2.8rem;
-          font-weight: 700;
-          margin-bottom: 10px;
-          letter-spacing: 1px;
-        }
-        .title {
-          font-size: 1.4rem;
-          font-weight: 300;
-          opacity: 0.9;
-          margin-bottom: 20px;
-        }
-        .contact-info {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 25px;
-          margin-top: 15px;
-          font-size: 0.95rem;
-        }
-        .contact-item {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .section {
-          padding: 30px 40px;
-          border-bottom: 1px solid #eee;
-        }
-        .section:last-child { border-bottom: none; }
-        .section-title {
-          font-size: 1.6rem;
-          font-weight: 600;
-          color: #1e3a8a;
-          margin-bottom: 20px;
-          padding-bottom: 8px;
-          border-bottom: 2px solid #f3f4f6;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .section-title::before {
-          content: '';
-          width: 8px;
-          height: 28px;
-          background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-          border-radius: 4px;
-        }
-        .about-content { line-height: 1.8; color: #4b5563; }
-        .education-item, .cert-item {
-          margin-bottom: 20px;
-          padding-left: 15px;
-          border-left: 3px solid #e5e7eb;
-          padding-bottom: 10px;
-        }
-        .education-item:last-child, .cert-item:last-child {
-          margin-bottom: 0;
-          padding-bottom: 0;
-          border-left: none;
-        }
-        .degree {
-          font-weight: 600;
-          font-size: 1.2rem;
-          color: #1e3a8a;
-          margin-bottom: 5px;
-        }
-        .institution {
-          font-weight: 500;
-          color: #4f46e5;
-          margin-bottom: 5px;
-        }
-        .period {
-          background: #eef2ff;
-          color: #4338ca;
-          display: inline-block;
-          padding: 2px 10px;
-          border-radius: 15px;
-          font-size: 0.9rem;
-          font-weight: 500;
-        }
-        .skills-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
-        }
-        .skill-category { margin-bottom: 15px; }
-        .skill-title {
-          font-weight: 600;
-          color: #1e3a8a;
-          margin-bottom: 8px;
-          font-size: 1.1rem;
-        }
-        .skill-items { padding-left: 20px; }
-        .skill-item { margin-bottom: 5px; color: #4b5563; }
-        .footer {
-          text-align: center;
-          padding: 25px;
-          background: #f9fafb;
-          color: #6b7280;
-          font-size: 0.9rem;
-          border-top: 1px solid #eee;
-        }
-        @media print {
-          body { background: white; padding: 0; }
-          .cv-container { box-shadow: none; border-radius: 0; }
-          .no-print { display: none; }
-        }
-        @media (max-width: 600px) {
-          .header { padding: 30px 20px; }
-          .name { font-size: 2.2rem; }
-          .contact-info { flex-direction: column; gap: 8px; }
-          .section { padding: 25px; }
-          .skills-container { grid-template-columns: 1fr; }
-        }
-      </style>
-    </head>
-    <body>
-      <div class="cv-container">
-        <header class="header">
-          <div class="profile-img">M</div>
-          <h1 class="name">Mahdi Yacoub Ali</h1>
-          <div class="title">Développeur Full Stack & Spécialiste en Cybersécurité</div>
-          <div class="contact-info">
-            <div class="contact-item">📧 ${personalInfo.email}</div>
-            <div class="contact-item">📱 ${personalInfo.phone}</div>
-            <div class="contact-item">🌍 ${personalInfo.location}</div>
-            <div class="contact-item">💻 GitHub: ${personalInfo.portfolio}</div>
-          </div>
-        </header>
-        
-        <section class="section">
-          <h2 class="section-title">À propos de moi</h2>
-          <p class="about-content">${personalInfo.about.replace(/\n/g, '<br>')}</p>
-        </section>
-        
-        <section class="section">
-          <h2 class="section-title">Parcours académique</h2>
-          ${academicBackground.map(edu => `
-            <div class="education-item">
-              <div class="degree">${edu.degree}</div>
-              <div class="institution">${edu.institution}</div>
-              <div class="period">${edu.period}</div>
+    <!-- Page wrapper -->
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <!-- Header / Navbar -->
+      <header
+        class="sticky top-4 z-30 mt-4 rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 shadow-lg shadow-slate-900/40 backdrop-blur"
+      >
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-primary-500 to-cyan-400 text-lg font-semibold text-white shadow-md shadow-primary-500/40"
+            >
+              MY
             </div>
-          `).join('')}
-        </section>
-        
-        <section class="section">
-          <h2 class="section-title">Compétences</h2>
-          <div class="skills-container">
-            ${skillsCategories.map(category => `
-              <div class="skill-category">
-                <div class="skill-title">${category.title}</div>
-                <ul class="skill-items">
-                  ${category.items.map(item => `<li class="skill-item">• ${item}</li>`).join('')}
-                </ul>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-        
-        <section class="section">
-          <h2 class="section-title">Certifications</h2>
-          ${certifications.map(cert => `
-            <div class="cert-item">
-              <div class="degree">${cert.name}</div>
-              <div class="institution">${cert.issuer} • ${cert.year}</div>
+            <div>
+              <p class="text-sm font-semibold tracking-wide text-slate-100">
+                Mahdi Yacoub Ali
+              </p>
+              <p class="text-xs text-slate-400">
+                Ingénieur Informatique • Cybersécurité & Data Science
+              </p>
             </div>
-          `).join('')}
-        </section>
-        
-        <footer class="footer">
-          <div>Portfolio mis à jour en Janvier 2026 • CV généré automatiquement</div>
-          <div class="no-print" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-            <button onclick="window.print()" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);">
-              Imprimer ou Enregistrer en PDF
+          </div>
+
+          <nav class="hidden items-center gap-6 text-sm font-medium sm:flex">
+            <a href="#a-propos" class="text-slate-300 hover:text-white"
+              >À propos</a
+            >
+            <a href="#competences" class="text-slate-300 hover:text-white"
+              >Compétences</a
+            >
+            <a href="#projets" class="text-slate-300 hover:text-white"
+              >Projets</a
+            >
+            <a href="#formation" class="text-slate-300 hover:text-white"
+              >Formation</a
+            >
+            <a href="#contact" class="text-slate-300 hover:text-white"
+              >Contact</a
+            >
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <button
+              id="theme-toggle"
+              type="button"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 text-slate-300 shadow-sm shadow-slate-900/40 hover:border-primary-400/70 hover:text-primary-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/70"
+              aria-label="Basculer le thème clair/sombre"
+            >
+              <span id="icon-sun" class="hidden">
+                <!-- Sun icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    d="M12 2v2m0 16v2m10-10h-2M4 12H2m17.657-7.657-1.414 1.414M7.757 16.243l-1.414 1.414m0-11.314 1.414 1.414M16.243 16.243l1.414 1.414"
+                  />
+                </svg>
+              </span>
+              <span id="icon-moon">
+                <!-- Moon icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z"
+                  />
+                </svg>
+              </span>
             </button>
           </div>
-        </footer>
-      </div>
-      
-      <script>
-        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          setTimeout(() => {
-            document.querySelector('.no-print').style.display = 'none';
-            window.print();
-          }, 1000);
-        }
-      </script>
-    </body>
-    </html>
-    `;
-    
-    cvWindow.document.write(cvContent);
-    cvWindow.document.close();
-    
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      cvWindow.document.querySelector('.no-print').style.display = 'block';
-    }
-  };
+        </div>
+      </header>
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] }
-    }
-  };
-
-  const pulseVariants = {
-    initial: { scale: 1 },
-    animate: {
-      scale: [1, 1.05, 1],
-      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-    }
-  };
-
-  const floatVariants = {
-    initial: { y: 0 },
-    animate: {
-      y: [-10, 10, -10],
-      transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white overflow-x-hidden">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-900/30 to-transparent animate-rotate-slow"></div>
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-br from-violet-900/40 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-br from-red-900/30 to-transparent rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
-        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-br from-fuchsia-900/20 to-transparent rounded-full blur-2xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-cyan-900/25 to-transparent rounded-full blur-2xl animate-float delay-500"></div>
-      </div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Hero Section */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row items-center justify-between mb-28 pt-12"
+      <main class="mt-12 space-y-24 pb-24">
+        <!-- Hero section -->
+        <section
+          class="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center"
         >
-          <motion.div 
-            variants={pulseVariants}
-            initial="initial"
-            animate="animate"
-            className="mb-8 md:mb-0"
-          >
-            <div className="bg-gradient-to-r from-blue-500 via-violet-500 to-red-500 text-transparent bg-clip-text font-bold text-3xl md:text-4xl">
-              MAHDI YACOUB ALI
+          <div class="space-y-6">
+            <p
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/70 px-3 py-1 text-xs font-medium text-primary-100 shadow-sm shadow-slate-900/50 backdrop-blur"
+            >
+              <span
+                class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"
+              ></span>
+              Ouvert aux opportunités en cybersécurité, data & développement
+            </p>
+
+            <div class="space-y-3">
+              <h1
+                class="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
+              >
+                Ingénieur informatique spécialisé en
+                <span
+                  class="bg-gradient-to-r from-primary-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent"
+                  >Cybersécurité & Data Science</span
+                >
+              </h1>
+              <p class="max-w-xl text-sm text-slate-300 sm:text-base">
+                Diplômé en informatique, passionné par la cybersécurité, la data
+                science, le développement web & mobile, le cloud computing et
+                l’IA. Je conçois des solutions sécurisées et performantes :
+                systèmes d’authentification OTP, applications web,
+                plateformes intelligentes de recrutement et environnements de
+                test d’intrusion.
+              </p>
             </div>
-            <div className="mt-2 text-xl text-gray-300">Développeur Full Stack & Cybersécurité</div>
-          </motion.div>
-          
-          <motion.div 
-            variants={floatVariants}
-            initial="initial"
-            animate="animate"
-            className="w-36 h-36 md:w-44 md:h-44 rounded-full border-4 border-slate-900 shadow-2xl shadow-blue-500/40 overflow-hidden bg-gradient-to-br from-blue-600 to-violet-700 flex items-center justify-center"
-          >
-            <img 
-              src={personalInfo.profileImage} 
-              alt="Mahdi Yacoub Ali" 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = '<div class="text-5xl font-bold text-white">M</div>';
-              }}
-            />
-          </motion.div>
-        </motion.section>
 
-        {/* Personal Info Section */}
-        <motion.section 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-28"
-        >
-          <motion.div 
-            variants={itemVariants}
-            className="lg:col-span-2 bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 p-8"
+            <dl
+              class="grid max-w-xl grid-cols-2 gap-4 rounded-2xl border border-white/10 bg-slate-900/50 p-4 text-xs text-slate-200 shadow-inner shadow-slate-950/70 sm:text-sm"
+            >
+              <div class="space-y-1">
+                <dt class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                  Localisation
+                </dt>
+                <dd class="font-medium">📍 Djibouti</dd>
+              </div>
+              <div class="space-y-1">
+                <dt class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                  Contact
+                </dt>
+                <dd class="space-y-0.5">
+                  <p>
+                    <a
+                      href="mailto:mahdiyacoubali2004@gmail.com"
+                      class="hover:text-primary-300"
+                      >📧 mahdiyacoubali2004@gmail.com</a
+                    >
+                  </p>
+                  <p>📱 +253 77 02 96 34</p>
+                </dd>
+              </div>
+            </dl>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-primary-500/40 transition hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/80"
+              >
+                Me contacter
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="#projets"
+                class="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-slate-900/60 px-5 py-2 text-sm font-semibold text-slate-100 shadow-sm shadow-slate-950/60 transition hover:border-primary-400/70 hover:text-primary-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/80"
+              >
+                Voir mes projets
+              </a>
+            </div>
+          </div>
+
+          <aside
+            class="relative rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-2xl shadow-slate-950/70 backdrop-blur"
           >
-            <div className="flex items-center mb-6">
-              <span className="text-2xl mr-4">👤</span>
-              <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+            <div
+              class="absolute -right-4 -top-4 h-16 w-16 rounded-2xl bg-gradient-to-br from-primary-500 via-cyan-400 to-emerald-400 opacity-70 blur-md"
+            ></div>
+            <div class="relative space-y-4">
+              <h2 class="text-sm font-semibold text-slate-100">
+                Domaines d’expertise
+              </h2>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div
+                  class="flex flex-col gap-1 rounded-2xl bg-slate-950/60 p-3 ring-1 ring-white/5"
+                >
+                  <p class="font-semibold text-primary-200">Cybersécurité</p>
+                  <p class="text-[0.72rem] text-slate-300">
+                    Réseaux, firewalls, détection d’intrusions (SNORT),
+                    gestion des vulnérabilités.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col gap-1 rounded-2xl bg-slate-950/60 p-3 ring-1 ring-white/5"
+                >
+                  <p class="font-semibold text-primary-200">Data Science</p>
+                  <p class="text-[0.72rem] text-slate-300">
+                    Analyse de données & modèles de machine learning en Python.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col gap-1 rounded-2xl bg-slate-950/60 p-3 ring-1 ring-white/5"
+                >
+                  <p class="font-semibold text-primary-200">
+                    Développement Web
+                  </p>
+                  <p class="text-[0.72rem] text-slate-300">
+                    Applications Node.js, APIs REST, interfaces modernes
+                    responsives.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col gap-1 rounded-2xl bg-slate-950/60 p-3 ring-1 ring-white/5"
+                >
+                  <p class="font-semibold text-primary-200">Cloud & IA</p>
+                  <p class="text-[0.72rem] text-slate-300">
+                    Notions de cloud computing et intégration de modèles IA.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- À propos -->
+        <section id="a-propos" class="space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-white sm:text-xl">
                 À propos de moi
               </h2>
+              <p class="text-sm text-slate-300">
+                Un profil polyvalent, rigoureux et orienté résultats.
+              </p>
             </div>
-            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-              {personalInfo.about}
+          </div>
+          <div
+            class="grid gap-6 rounded-3xl border border-white/10 bg-slate-900/70 p-6 text-sm text-slate-200 shadow-xl shadow-slate-950/70 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]"
+          >
+            <p class="leading-relaxed">
+              Je suis
+              <span class="font-semibold text-primary-200"
+                >Mahdi Yacoub Ali</span
+              >, né le 31 décembre 2004 et diplômé en informatique à Djibouti.
+              Passionné par la sécurité des systèmes d’information, la
+              valorisation des données et le développement d’applications
+              modernes, j’aime construire des solutions concrètes qui répondent
+              à de vrais besoins métier.
+              <br /><br />
+              J’ai travaillé sur des projets allant de la plateforme de
+              recrutement intelligente à la bibliothèque numérique, en passant
+              par des modèles de machine learning et des environnements de test
+              d’intrusion. Mon objectif : évoluer dans un environnement
+              technologique innovant où je peux apprendre, contribuer et
+              sécuriser les systèmes.
             </p>
-          </motion.div>
-          
-          <motion.div 
-            variants={itemVariants}
-            className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 p-8"
-          >
-            <div className="flex items-center mb-6">
-              <span className="text-2xl mr-4">📍</span>
-              <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-300">
-                Contact
+            <div class="space-y-4 text-sm">
+              <div>
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Soft skills
+                </h3>
+                <ul class="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-200">
+                  <li class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-400"></span
+                    >Rigueur & organisation
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-400"></span
+                    >Esprit d’analyse
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-400"></span
+                    >Curiosité technologique
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-400"></span
+                    >Travail en équipe
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Langues
+                </h3>
+                <dl class="mt-2 space-y-1 text-xs text-slate-200">
+                  <div class="flex items-center justify-between">
+                    <dt>Français</dt>
+                    <dd class="text-slate-300">Courant</dd>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <dt>Anglais</dt>
+                    <dd class="text-slate-300">Intermédiaire avancé</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Compétences -->
+        <section id="competences" class="space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-white sm:text-xl">
+                Compétences techniques
               </h2>
+              <p class="text-sm text-slate-300">
+                Un socle solide en cybersécurité, data science, développement et
+                bases de données.
+              </p>
             </div>
-            
-            <div className="space-y-5">
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <!-- Cybersécurité -->
+            <article
+              class="flex flex-col gap-3 rounded-2xl border border-primary-500/40 bg-slate-950/70 p-4 shadow-lg shadow-primary-500/20"
+            >
+              <h3 class="flex items-center gap-2 text-sm font-semibold">
+                <span
+                  class="flex h-6 w-6 items-center justify-center rounded-lg bg-primary-500/20 text-primary-200"
+                  >🔐</span
+                >
+                Cybersécurité
+              </h3>
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li>Réseaux &amp; protocoles (TCP/IP, DNS, DHCP)</li>
+                <li>Sécurité réseau (firewall, SNORT)</li>
+                <li>Tests d’intrusion (bases)</li>
+                <li>Gestion des vulnérabilités</li>
+              </ul>
+            </article>
+
+            <!-- Data Science -->
+            <article
+              class="flex flex-col gap-3 rounded-2xl border border-cyan-500/40 bg-slate-950/70 p-4 shadow-lg shadow-cyan-500/20"
+            >
+              <h3 class="flex items-center gap-2 text-sm font-semibold">
+                <span
+                  class="flex h-6 w-6 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-200"
+                  >📊</span
+                >
+                Data Science
+              </h3>
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li>Python (Pandas, NumPy, Scikit-learn)</li>
+                <li>Machine learning (classification, clustering, régression)</li>
+                <li>Analyse et visualisation de données</li>
+              </ul>
+            </article>
+
+            <!-- Développement Web -->
+            <article
+              class="flex flex-col gap-3 rounded-2xl border border-emerald-500/40 bg-slate-950/70 p-4 shadow-lg shadow-emerald-500/20"
+            >
+              <h3 class="flex items-center gap-2 text-sm font-semibold">
+                <span
+                  class="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-200"
+                  >🌐</span
+                >
+                Développement Web
+              </h3>
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li>HTML, CSS, Bootstrap</li>
+                <li>JavaScript, Node.js, Express.js</li>
+                <li>PHP &amp; APIs REST</li>
+                <li>Authentification OTP avec PHPMailer</li>
+              </ul>
+            </article>
+
+            <!-- Bases de données -->
+            <article
+              class="flex flex-col gap-3 rounded-2xl border border-violet-500/40 bg-slate-950/70 p-4 shadow-lg shadow-violet-500/20"
+            >
+              <h3 class="flex items-center gap-2 text-sm font-semibold">
+                <span
+                  class="flex h-6 w-6 items-center justify-center rounded-lg bg-violet-500/20 text-violet-200"
+                  >🗄️</span
+                >
+                Bases de données
+              </h3>
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li>PostgreSQL &amp; MySQL</li>
+                <li>Conception UML</li>
+                <li>Modélisation de bases de données</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Projets -->
+        <section id="projets" class="space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-white sm:text-xl">
+                Projets sélectionnés
+              </h2>
+              <p class="text-sm text-slate-300">
+                Quelques exemples concrets de ce que j’ai réalisé.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            <!-- RecruitAI -->
+            <article
+              class="group flex flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5 shadow-xl shadow-slate-950/70 transition hover:-translate-y-1 hover:border-primary-400/70 hover:shadow-primary-500/30"
+            >
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-semibold text-white">RecruitAI</h3>
+                <span
+                  class="rounded-full bg-primary-500/15 px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-wide text-primary-200"
+                  >Data • IA</span
+                >
+              </div>
+              <p class="mt-2 text-xs text-slate-300">
+                Plateforme intelligente permettant aux recruteurs de définir un
+                profil idéal et de comparer automatiquement les CV grâce à un
+                système de scoring basé sur des algorithmes.
+              </p>
+              <dl
+                class="mt-3 grid grid-cols-2 gap-2 text-[0.7rem] text-slate-300"
+              >
+                <div>
+                  <dt class="text-slate-500">Rôle</dt>
+                  <dd>Conception &amp; développement complet</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Technologies</dt>
+                  <dd>Python, ML, Web, BD</dd>
+                </div>
+              </dl>
+            </article>
+
+            <!-- Bibliothèque Numérique -->
+            <article
+              class="group flex flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5 shadow-xl shadow-slate-950/70 transition hover:-translate-y-1 hover:border-cyan-400/70 hover:shadow-cyan-500/30"
+            >
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-semibold text-white">
+                  Bibliothèque Numérique
+                </h3>
+                <span
+                  class="rounded-full bg-cyan-500/15 px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-wide text-cyan-200"
+                  >Web App</span
+                >
+              </div>
+              <p class="mt-2 text-xs text-slate-300">
+                Application web permettant la gestion des utilisateurs,
+                ressources, emprunts et un tableau de bord statistique pour le
+                suivi des activités.
+              </p>
+              <dl
+                class="mt-3 grid grid-cols-2 gap-2 text-[0.7rem] text-slate-300"
+              >
+                <div>
+                  <dt class="text-slate-500">Rôle</dt>
+                  <dd>Back-end &amp; front-end</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Technologies</dt>
+                  <dd>Node.js, Express, PostgreSQL</dd>
+                </div>
+              </dl>
+            </article>
+
+            <!-- Projet Machine Learning -->
+            <article
+              class="group flex flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5 shadow-xl shadow-slate-950/70 transition hover:-translate-y-1 hover:border-emerald-400/70 hover:shadow-emerald-500/30"
+            >
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-semibold text-white">
+                  Projet Machine Learning
+                </h3>
+                <span
+                  class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-wide text-emerald-200"
+                  >ML</span
+                >
+              </div>
+              <p class="mt-2 text-xs text-slate-300">
+                Implémentation de modèles de classification et de clustering sur
+                différents jeux de données académiques, avec analyse des
+                performances et visualisation des résultats.
+              </p>
+              <dl
+                class="mt-3 grid grid-cols-2 gap-2 text-[0.7rem] text-slate-300"
+              >
+                <div>
+                  <dt class="text-slate-500">Outils</dt>
+                  <dd>Python, Pandas, NumPy, Scikit-learn</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Livrables</dt>
+                  <dd>Notebooks, rapports &amp; visualisations</dd>
+                </div>
+              </dl>
+            </article>
+
+            <!-- Virtualisation & SNORT -->
+            <article
+              class="group flex flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5 shadow-xl shadow-slate-950/70 transition hover:-translate-y-1 hover:border-rose-400/70 hover:shadow-rose-500/30"
+            >
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-semibold text-white">
+                  Virtualisation &amp; SNORT
+                </h3>
+                <span
+                  class="rounded-full bg-rose-500/15 px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-wide text-rose-200"
+                  >Sécurité</span
+                >
+              </div>
+              <p class="mt-2 text-xs text-slate-300">
+                Mise en place d’un environnement virtuel dédié aux tests
+                d’intrusion, incluant la configuration de SNORT pour la
+                détection d’intrusions et le suivi des alertes.
+              </p>
+              <dl
+                class="mt-3 grid grid-cols-2 gap-2 text-[0.7rem] text-slate-300"
+              >
+                <div>
+                  <dt class="text-slate-500">Compétences</dt>
+                  <dd>Réseaux, IDS, virtualisation</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Objectif</dt>
+                  <dd>Tester et renforcer la sécurité</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <!-- Formation & Certifs -->
+        <section id="formation" class="space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-white sm:text-xl">
+                Formation &amp; certifications
+              </h2>
+              <p class="text-sm text-slate-300">
+                Un parcours académique solide complété par des programmes
+                internationaux.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="grid gap-5 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/70 md:grid-cols-2"
+          >
+            <div class="space-y-4 text-sm">
               <div>
-                <div className="flex items-start mb-2">
-                  <span className="text-blue-400 mt-1 mr-3 text-lg">✉️</span>
-                  <div>
-                    <div className="text-sm text-gray-400">Email</div>
-                    <div className="text-gray-200 break-words">{personalInfo.email}</div>
-                  </div>
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Diplôme
+                </h3>
+                <p class="mt-1 font-medium text-slate-100">
+                  Licence en Informatique – Université de Djibouti
+                </p>
+                <p class="mt-1 text-xs text-slate-300">
+                  Formation généraliste couvrant les fondements de
+                  l’informatique, les réseaux, le développement et les bases de
+                  données.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4 text-sm">
+              <div>
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Certifications clés
+                </h3>
+                <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+                  <li>📜 CCNA – Cisco Certified Network Associate (Cisco)</li>
+                  <li>
+                    📜 Certification Data Scientist – INAP (Institut National
+                    d’Administration Publique)
+                  </li>
+                  <li>
+                    📜 Machine Learning Program – UNDP (United Nations
+                    Development Programme)
+                  </li>
+                  <li>📜 HP LIFE – Leadership &amp; Business</li>
+                  <li>📜 Certification PIX – Compétences numériques</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-white sm:text-xl">
+                Me contacter
+              </h2>
+              <p class="text-sm text-slate-300">
+                Discutons de vos besoins en cybersécurité, data ou développement.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="grid gap-6 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/70 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+          >
+            <form
+              class="space-y-4 text-sm"
+              onsubmit="event.preventDefault(); alert('Merci pour votre message ! Vous pouvez également me contacter directement par e-mail.');"
+            >
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="space-y-1.5">
+                  <label
+                    for="name"
+                    class="text-xs font-medium text-slate-200"
+                    >Nom complet</label
+                  >
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    class="block w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 shadow-inner shadow-slate-950/70 outline-none ring-primary-500/60 placeholder:text-slate-500 focus:border-primary-400 focus:ring"
+                    placeholder="Votre nom"
+                    required
+                  />
+                </div>
+                <div class="space-y-1.5">
+                  <label
+                    for="email"
+                    class="text-xs font-medium text-slate-200"
+                    >Adresse e-mail</label
+                  >
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    class="block w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 shadow-inner shadow-slate-950/70 outline-none ring-primary-500/60 placeholder:text-slate-500 focus:border-primary-400 focus:ring"
+                    placeholder="vous@example.com"
+                    required
+                  />
                 </div>
               </div>
-              
-              <div>
-                <div className="flex items-start mb-2">
-                  <span className="text-green-400 mt-1 mr-3 text-lg">📱</span>
-                  <div>
-                    <div className="text-sm text-gray-400">Téléphone</div>
-                    <div className="text-gray-200">{personalInfo.phone}</div>
-                  </div>
-                </div>
+
+              <div class="space-y-1.5">
+                <label
+                  for="subject"
+                  class="text-xs font-medium text-slate-200"
+                  >Sujet</label
+                >
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  class="block w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 shadow-inner shadow-slate-950/70 outline-none ring-primary-500/60 placeholder:text-slate-500 focus:border-primary-400 focus:ring"
+                  placeholder="Objet de votre message"
+                  required
+                />
               </div>
-              
+
+              <div class="space-y-1.5">
+                <label
+                  for="message"
+                  class="text-xs font-medium text-slate-200"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="block w-full resize-none rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 shadow-inner shadow-slate-950/70 outline-none ring-primary-500/60 placeholder:text-slate-500 focus:border-primary-400 focus:ring"
+                  placeholder="Expliquez votre besoin, votre projet ou votre offre."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-primary-500/40 transition hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/80"
+              >
+                Envoyer le message
+              </button>
+              <p class="text-[0.7rem] text-slate-400">
+                Astuce : pour une réponse plus rapide, contactez-moi aussi par
+                e-mail à
+                <a
+                  href="mailto:mahdiyacoubali2004@gmail.com"
+                  class="text-primary-300 underline-offset-2 hover:underline"
+                  >mahdiyacoubali2004@gmail.com</a
+                >.
+              </p>
+            </form>
+
+            <div class="space-y-4 text-sm text-slate-200">
               <div>
-                <div className="flex items-start mb-2">
-                  <span className="text-violet-400 mt-1 mr-3 text-lg">💻</span>
-                  <div>
-                    <div className="text-sm text-gray-400">Portfolio / GitHub</div>
-                    <a 
-                      href={`https://github.com/${personalInfo.portfolio}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-300 hover:text-blue-200 transition-colors cursor-pointer block"
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Coordonnées directes
+                </h3>
+                <ul class="mt-2 space-y-1.5 text-xs">
+                  <li>
+                    📧
+                    <a
+                      href="mailto:mahdiyacoubali2004@gmail.com"
+                      class="text-primary-200 hover:underline"
+                      >mahdiyacoubali2004@gmail.com</a
                     >
-                      {personalInfo.portfolio}
-                    </a>
-                  </div>
-                </div>
+                  </li>
+                  <li>📱 +253 77 02 96 34</li>
+                  <li>📍 Djibouti</li>
+                </ul>
               </div>
-              
+
               <div>
-                <div className="flex items-start">
-                  <span className="text-rose-400 mt-1 mr-3 text-lg">🌍</span>
-                  <div>
-                    <div className="text-sm text-gray-400">Localisation</div>
-                    <div className="text-gray-200">{personalInfo.location}</div>
-                  </div>
-                </div>
+                <h3 class="text-xs font-semibold uppercase text-slate-400">
+                  Sécurité &amp; confidentialité
+                </h3>
+                <p class="mt-2 text-[0.7rem] text-slate-300">
+                  Ce portfolio est conçu comme une application statique : aucun
+                  stockage de vos données n’est effectué côté serveur. Pour un
+                  projet réel, je peux mettre en place un backend sécurisé avec
+                  TLS (HTTPS), validation des entrées, journalisation et
+                  protection contre les attaques courantes.
+                </p>
               </div>
             </div>
-            
-            <div className="mt-8 pt-6 border-t border-slate-800 flex justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={generateCV}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-700 rounded-full font-medium cursor-pointer shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all flex items-center"
-              >
-                <span className="mr-2 text-lg">⬇️</span>
-                Télécharger CV
-              </motion.button>
-            </div>
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
+      </main>
 
-        {/* Academic Background Section */}
-        <motion.section 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-28"
-        >
-          <div className="flex items-center justify-center mb-16">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-emerald-500 to-transparent mr-6"></div>
-            <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-300 flex items-center"
-            >
-              <span className="mr-4 text-3xl">🎓</span> 
-              Parcours académique
-            </motion.h2>
-            <div className="w-24 h-0.5 bg-gradient-to-l from-cyan-500 to-transparent ml-6"></div>
-          </div>
-          
-          <motion.div 
-            variants={containerVariants}
-            className="space-y-6"
-          >
-            {academicBackground.map((edu, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ x: 10, transition: { duration: 0.3 } }}
-                className={`relative bg-slate-900/40 backdrop-blur-sm rounded-2xl p-7 border border-slate-800 overflow-hidden group`}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${edu.color} opacity-15 rounded-2xl`}></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-900/90 to-transparent"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-400">
-                        {edu.degree}
-                      </h3>
-                      <p className="text-violet-300 font-medium mt-1">{edu.institution}</p>
-                    </div>
-                    <div className="flex-shrink-0 px-4 py-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full border border-emerald-500/30">
-                      <span className="text-emerald-300 font-medium">{edu.period}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-5 pt-4 border-t border-slate-800 flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mr-4">
-                      <span className="text-white font-bold text-sm">{index + 1}</span>
-                    </div>
-                    <span className="text-gray-300">Formation complète avec certification officielle</span>
-                  </div>
-                </div>
-                
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.8 }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        {/* Compétences Section */}
-        <motion.section 
-          id="competences"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-28"
-        >
-          <div className="flex items-center justify-center mb-16">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-transparent mr-6"></div>
-            <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-500 to-red-500 flex items-center"
-            >
-              <span className="mr-4 text-3xl">🔹</span> 
-              Compétences
-            </motion.h2>
-            <div className="w-24 h-0.5 bg-gradient-to-l from-red-500 to-transparent ml-6"></div>
-          </div>
-          
-          <motion.div 
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {skillsCategories.map((category, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-900/80 to-transparent"></div>
-                
-                <div className={`bg-gradient-to-r ${category.color} p-0.5 rounded-2xl`}>
-                  <div className="bg-slate-900 p-6 rounded-xl">
-                    <div className="flex items-start justify-between mb-5">
-                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-400">
-                        {category.title}
-                      </h3>
-                      <div className="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
-                        {index + 1}
-                      </div>
-                    </div>
-                    
-                    <ul className="space-y-3 mb-6">
-                      {category.items.map((item, itemIndex) => (
-                        <motion.li 
-                          key={itemIndex}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: itemIndex * 0.1 }}
-                          className="flex items-start pl-1"
-                        >
-                          <motion.span 
-                            whileHover={{ scale: 1.2 }}
-                            className="text-blue-400 mt-1 mr-3 text-lg"
-                          >
-                            •
-                          </motion.span>
-                          <span className="text-gray-300">{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                    
-                    {category.description && (
-                      <div className="mt-4 pt-4 border-t border-slate-800">
-                        <p className="text-blue-200/90 italic">{category.description}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-red-500/10 rounded-2xl"></div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        {/* Certifications Section */}
-        <motion.section 
-          id="certifications"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-24"
-        >
-          <div className="flex items-center justify-center mb-16">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-violet-500 to-transparent mr-6"></div>
-            <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-500 to-red-500 flex items-center"
-            >
-              <span className="mr-4 text-3xl">🔹</span> 
-              Certifications
-            </motion.h2>
-            <div className="w-24 h-0.5 bg-gradient-to-l from-red-500 to-transparent ml-6"></div>
-          </div>
-          
-          <motion.div 
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className={`relative bg-slate-900/40 backdrop-blur-sm rounded-2xl p-7 border border-slate-800 overflow-hidden transition-all duration-300`}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${cert.color} opacity-15 rounded-2xl`}></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-900/90 to-transparent"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mb-4">
-                      <span className="text-white font-bold text-lg">✓</span>
-                    </div>
-                    <div className="flex-shrink-0 ml-4 px-3 py-1 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full border border-violet-500/30">
-                      <span className="text-violet-300 text-xs font-medium">OFFICIEL</span>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-400">
-                    {cert.name}
-                  </h3>
-                  <p className="text-violet-300 font-medium">{cert.issuer}</p>
-                  
-                  <div className="mt-6 pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <span className="text-blue-300 text-sm">Certification valide</span>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
-                      <span className="text-white font-bold text-xs">{cert.year}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.8 }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        {/* Footer */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-24 pt-12 border-t border-slate-800 text-gray-400"
-        >
-          <div className="flex justify-center space-x-6 mb-6">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.2, rotate: 15 }}
-                className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 cursor-pointer"
-              />
-            ))}
-          </div>
-          <p className="text-lg">Portfolio mis à jour en Janvier 2026</p>
-          <p className="mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300 font-medium">
-            Développé avec React & Tailwind CSS
-          </p>
-          <div className="mt-6 flex justify-center space-x-6">
-            {[
-              { icon: '✓', link: `https://github.com/${personalInfo.portfolio}` },
-              { icon: '✓', link: '#' },
-              { icon: '✓', link: '#' },
-              { icon: '✉️', link: `mailto:${personalInfo.email}` }
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.link}
-                target={social.link.startsWith('http') ? '_blank' : '_self'}
-                rel={social.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                whileHover={{ y: -3, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center cursor-pointer hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-700 transition-all"
-              >
-                <span className="text-xl">{social.icon}</span>
-              </motion.a>
-            ))}
-          </div>
-          <div className="mt-8 text-sm text-gray-500">
-            © 2026 Mahdi Yacoub Ali. Tous droits réservés.
-          </div>
-        </motion.footer>
-      </div>
-      
-      {/* Custom styles for animations */}
-      <style jsx global>{`
-        @keyframes rotate-slow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.6; }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        .animate-rotate-slow {
-          animation: rotate-slow 40s linear infinite;
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 8s ease-in-out infinite;
-        }
-        .animate-float {
-          animation: float 15s ease-in-out infinite;
-        }
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-        .delay-500 {
-          animation-delay: 0.5s;
-        }
-      `}</style>
+      <!-- Footer -->
+      <footer class="border-t border-white/5 py-6 text-center text-[0.7rem]">
+        <p class="text-slate-400">
+          © <span id="year"></span> Mahdi Yacoub Ali. Tous droits réservés.
+        </p>
+      </footer>
     </div>
-  );
-}
+
+    <script>
+      // Dynamic year
+      document.getElementById("year").textContent =
+        new Date().getFullYear().toString();
+
+      // Theme toggle with localStorage
+      (function () {
+        const html = document.documentElement;
+        const themeToggle = document.getElementById("theme-toggle");
+        const iconSun = document.getElementById("icon-sun");
+        const iconMoon = document.getElementById("icon-moon");
+
+        function setTheme(dark) {
+          if (dark) {
+            html.classList.add("dark");
+            html.classList.add("bg-slate-950");
+            iconMoon.classList.add("hidden");
+            iconSun.classList.remove("hidden");
+            localStorage.setItem("theme", "dark");
+          } else {
+            html.classList.remove("dark");
+            html.classList.remove("bg-slate-950");
+            iconSun.classList.add("hidden");
+            iconMoon.classList.remove("hidden");
+            localStorage.setItem("theme", "light");
+          }
+        }
+
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme === "dark") {
+          setTheme(true);
+        } else if (storedTheme === "light") {
+          setTheme(false);
+        } else {
+          // Default to dark
+          setTheme(true);
+        }
+
+        themeToggle.addEventListener("click", () => {
+          setTheme(!document.documentElement.classList.contains("dark"));
+        });
+      })();
+    </script>
+  </body>
+</html>
+
